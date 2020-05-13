@@ -1,0 +1,60 @@
+# Git artifacts
+.idea/
+.well-known/
+
+# Patch/diff artifacts.
+*.patch
+*.diff
+*.orig
+*.rej
+interdiff*.txt
+
+# Hidden files.
+.DS*
+
+# Dependencies.
+/node_modules
+/vendor
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Env files.
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs files.
+*.log
+*/debug.log
+
+# Tags file
+tags
+
+# Databases.
+*.sql
+
+# Windows links.
+*.url
+*.lnk
+
+# VS Code
+.vscode
+.project
+.history
+*code-workspace
+
+# VIM
+*.un~
+Session.vim
+.netrwhist
+*~
+*.swp
+.lvimrc
+
+# emacs artifacts.
+*~
+\#*\#

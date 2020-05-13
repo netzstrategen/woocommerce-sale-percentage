@@ -1,0 +1,17 @@
+{
+  "extends": ["eslint:recommended", "google"],
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "amd": true,
+    "node": true
+  },
+  "rules": {
+    "brace-style": ["error", "stroustrup"],
+    "indent": ["error", 2],
+    "no-invalid-this": 0
+  }
+}

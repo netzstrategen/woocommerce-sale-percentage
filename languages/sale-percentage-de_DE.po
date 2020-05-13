@@ -1,0 +1,67 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sale-percentage\n"
+"POT-Creation-Date: 2020-05-14 16:12+0200\n"
+"PO-Revision-Date: 2020-05-14 16:13+0200\n"
+"Last-Translator: Luca Pipolo <luca@netzstrategen.com>\n"
+"Language-Team: netzstrategen\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+
+#: src/Plugin.php:64
+msgid "Sale Percentage plugin requires WooCommerce to be installed and active."
+msgstr ""
+"Um das Sale Prozente Plugin nutzen zu können, muss WooCommerce installiert "
+"und aktiv sein."
+
+#: src/SalePercentage.php:177
+msgid "Sort by discount"
+msgstr "Sortieren nach Rabatt"
+
+#: src/SalePercentage.php:273
+#, php-format
+msgid "up to -%d%%"
+msgstr "bis zu -%d%%"
+
+#: src/Settings.php:41
+msgid "Sale Percentage"
+msgstr "Sale Prozente"
+
+#: src/Settings.php:84
+msgid "Minimum percentage:"
+msgstr "Schwelle zur Anzeige:"
+
+#: src/Settings.php:85
+msgid "Minimum discount value (%) to display the sale flash bubble."
+msgstr ""
+"Minimaler Prozentwert, um die Reduzierung in % als “Bubble” anzuzeigen."
+
+#: src/Settings.php:94
+msgid "Variable products default percentage:"
+msgstr "Angezeigter Wert bei variablen Produkten:"
+
+#: src/Settings.php:95
+msgid ""
+"Select to display the lowest or highest discount value for variable products."
+msgstr ""
+"Definiert, ob bei variablen Produkten mit unterschiedlich hohen Rabatten der "
+"niedrigste oder der höchste Rabatt angezeigt wird."
+
+#: src/Settings.php:97
+msgid "Highest"
+msgstr "Höchster Rabatt"
+
+#: src/Settings.php:98
+msgid "Lowest"
+msgstr "Niedrigster Rabatt"
