@@ -1,4 +1,7 @@
 == Changelog ==
 
+= 1.0.1 - 2020-05-25 =
+* Added support for Composer.
+
 = 1.0.0 - 2020-05-13 =
 * Initial commit.

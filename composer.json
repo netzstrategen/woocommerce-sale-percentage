@@ -1,0 +1,17 @@
+{
+    "name": "netzstrategen/sale-percentage",
+    "description": "Manages and displays sale percentage labels.",
+    "license": "GPL-2.0-only",
+    "type": "wordpress-plugin",
+    "authors": [
+        {
+            "name": "netzstrategen",
+            "email": "hallo@netzstrategen.com",
+            "homepage": "https://netzstrategen.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "composer/installers": "^1"
+    }
+}
