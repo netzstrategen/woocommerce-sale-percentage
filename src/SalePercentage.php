@@ -35,11 +35,10 @@ class SalePercentage {
    * @implements updated_post_meta
    */
   public static function updateSalePercentage($meta_id, $object_id, $meta_key, $meta_value) {
-    if (!static::priceFieldsUpdated($meta_key)) {
+    if (!static::priceFieldsUpdated($meta_key) || !$product = wc_get_product($object_id)) {
       return;
     }
 
-    $product = wc_get_product($object_id);
     if ($product->get_type() === 'variation') {
       $parent_product_id = $product->get_parent_id();
       static::saveSalePercentage($parent_product_id, get_post($parent_product_id));
@@ -64,11 +63,10 @@ class SalePercentage {
    * @implements deleted_post_meta
    */
   public static function deleteSalePercentage($meta_id, $object_id, $meta_key, $meta_value) {
-    if (!static::priceFieldsUpdated($meta_key)) {
+    if (!static::priceFieldsUpdated($meta_key) || !$product = wc_get_product($object_id)) {
       return;
     }
 
-    $product = wc_get_product($object_id);
     if ($product->get_type() === 'variation') {
       $parent_product_id = $product->get_parent_id();
       static::saveSalePercentage($parent_product_id, get_post($parent_product_id));
