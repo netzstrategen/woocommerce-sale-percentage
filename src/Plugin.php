@@ -35,6 +35,14 @@ class Plugin {
     add_action('updated_post_meta', __NAMESPACE__ . '\SalePercentage::updateSalePercentage', 10, 4);
     add_action('deleted_post_meta', __NAMESPACE__ . '\SalePercentage::deleteSalePercentage', 10, 4);
 
+    // Ensures ES index is always triggered to avoid any sync inconsistency, as
+    // updated_post_meta will only be triggered if the value has changed.
+    // @see web/app/plugins/elasticpress/includes/classes/Indexable/Post/SyncManager.php:45
+    if (class_exists('ElasticPress\Indexable\Post\SyncManager')) {
+      $sync_manager = new \ElasticPress\Indexable\Post\SyncManager('post');
+      add_action('update_post_meta', [$sync_manager, 'action_queue_meta_sync'], 10, 4);
+    }
+
     // Displays sale percentage as a product flash bubble.
     add_filter('woocommerce_sale_flash', __NAMESPACE__ . '\SalePercentage::displaySalePercentage', 10, 3);
 
