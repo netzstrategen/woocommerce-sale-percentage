@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sale-percentage\n"
 "POT-Creation-Date: 2020-05-14 16:12+0200\n"
-"PO-Revision-Date: 2020-05-14 16:13+0200\n"
+"PO-Revision-Date: 2022-05-18 18:18+0300\n"
 "Last-Translator: Luca Pipolo <luca@netzstrategen.com>\n"
 "Language-Team: netzstrategen\n"
 "Language: de_DE\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
@@ -27,7 +27,7 @@ msgstr ""
 
 #: src/SalePercentage.php:177
 msgid "Sort by discount"
-msgstr "Sortieren nach Rabatt"
+msgstr "Sortieren nach Differenz zur UVP"
 
 #: src/SalePercentage.php:273
 #, php-format
