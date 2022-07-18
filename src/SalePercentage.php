@@ -130,7 +130,7 @@ class SalePercentage {
    *
    * @implements woocommerce_sale_flash
    */
-  public static function displaySalePercentage($output, \WP_Post $post, \WC_Product $product) {
+  public static function displaySalePercentage($output, ?\WP_Post $post, ?\WC_Product $product) {
     $salePercentage = static::getProductSalePercentage($product);
 
     if (static::checkDisplaySalePercentage($salePercentage)) {
