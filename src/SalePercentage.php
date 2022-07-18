@@ -123,16 +123,18 @@ class SalePercentage {
    *
    * @param mixed $output
    *   The WooCommerce sale flash HTML output.
-   * @param \WP_Post $post
+   * @param \WP_Post $post | null
    *   The WordPress Post.
-   * @param \WC_Product $product
+   * @param \WC_Product $product | null
    *   The product object.
    *
    * @implements woocommerce_sale_flash
    */
   public static function displaySalePercentage($output, ?\WP_Post $post, ?\WC_Product $product) {
     $salePercentage = static::getProductSalePercentage($product);
-
+    if (!$product) {
+      return $output;
+    }
     if (static::checkDisplaySalePercentage($salePercentage)) {
       $classes = 'onsale';
       if ($product->get_type() === 'variable') {
