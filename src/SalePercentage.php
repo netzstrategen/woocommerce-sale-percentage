@@ -123,9 +123,9 @@ class SalePercentage {
    *
    * @param mixed $output
    *   The WooCommerce sale flash HTML output.
-   * @param \WP_Post $post | null
+   * @param \WP_Post|null $post
    *   The WordPress Post.
-   * @param \WC_Product $product | null
+   * @param \WC_Product|null $product
    *   The product object.
    *
    * @implements woocommerce_sale_flash
