@@ -133,7 +133,7 @@ class SalePercentage {
   public static function displaySalePercentage($output, \WP_Post $post, \WC_Product $product) {
     $salePercentage = static::getProductSalePercentage($product);
 
-    if (static::checkDisplaySalePercentage($salePercentage)) {
+    if (static::checkDisplaySalePercentage($salePercentage, $product)) {
       $classes = 'onsale';
       if ($product->get_type() === 'variable') {
         $salePercentageFormat = static::getSalePercentageFormat();
@@ -243,12 +243,25 @@ class SalePercentage {
    *
    * @param int $salePercentage
    *   The product sale percentage.
+   * @param \WC_Product $product
+   *   The product object.
    *
    * @return bool
    *   TRUE if the sale percentage flash bubble should be displayed.
    */
-  public static function checkDisplaySalePercentage($salePercentage) {
-    return (!is_single() && $salePercentage >= static::getMinimumSalePercentage()) || is_single();
+  public static function checkDisplaySalePercentage($salePercentage, \WC_Product $product) {
+    $is_category_eligible = FALSE;
+    $product_category_terms = get_the_terms($product->get_id(), 'product_cat');
+    $eligible_categories = get_option('_sale_percentage_eligible_product_categories');
+    if (!empty($eligible_categories)) {
+      foreach ($product_category_terms as $term) {
+        if (in_array($term->term_id, $eligible_categories)) {
+          $is_category_eligible = TRUE;
+          break;
+        }
+      }
+    }
+    return $is_category_eligible && ((!is_single() && $salePercentage >= static::getMinimumSalePercentage()) || is_single());
   }
 
   /**

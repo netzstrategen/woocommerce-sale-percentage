@@ -3,6 +3,7 @@
 namespace Netzstrategen\SalePercentage;
 
 use WC_Admin_Settings;
+use Netzstrategen\ShopStandards\WooCommerce as ShopStandardsWoocommerce;
 
 /**
  * Plugin settings functionality.
@@ -98,6 +99,22 @@ class Settings {
         'lowest' => __('Lowest', Plugin::L10N),
       ],
       'default' => 'lowest',
+    ];
+    $settings[] = [
+      'type' => 'title',
+    ];
+    $settings[] = [
+      'type' => 'multiselect',
+      'id' => '_sale_percentage_eligible_product_categories',
+      'name' => __('Eligible product categories', Plugin::L10N),
+      'options' => ShopStandardsWoocommerce::getTaxonomyTermsAsSelectOptions('product_cat'),
+      'css' => 'height:auto',
+      'custom_attributes' => [
+        'size' => wp_count_terms('product_cat', [
+          'hide_empty' => FALSE,
+          'parent' => 0,
+        ]),
+      ],
     ];
     $settings[] = [
       'id' => Plugin::PREFIX,
