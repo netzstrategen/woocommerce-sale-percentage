@@ -252,18 +252,14 @@ class SalePercentage {
    *   TRUE if the sale percentage flash bubble should be displayed.
    */
   public static function checkDisplaySalePercentage($salePercentage, \WC_Product $product) {
-    $is_category_eligible = FALSE;
-    $product_category_terms = get_the_terms($product->get_id(), 'product_cat');
-    $eligible_categories = get_option('_sale_percentage_eligible_product_categories');
-    if (!empty($eligible_categories)) {
-      foreach ($product_category_terms as $term) {
-        if (in_array($term->term_id, $eligible_categories)) {
-          $is_category_eligible = TRUE;
-          break;
-        }
-      }
-    }
-    return $is_category_eligible && ((!is_single() && $salePercentage >= static::getMinimumSalePercentage()) || is_single());
+    $product_category_ids = wp_get_post_terms($product->get_id(), 'product_cat', ['fields' => 'ids']);
+    $eligible_category_ids = get_option('_sale_percentage_eligible_product_categories') ?? [];
+    $eligible_categories = array_intersect($eligible_category_ids, $product_category_ids);
+    $is_category_eligible = !empty($eligible_categories);
+    $current_category_slug = get_query_var('product_cat');
+    $current_category_id = !empty($current_category_slug) ? get_cat_ID($current_category_slug) : '';
+
+    return (is_single() && $is_category_eligible) || (!is_single() && !empty($current_category_id) && in_array($current_category_id, $eligible_categories));
   }
 
   /**
