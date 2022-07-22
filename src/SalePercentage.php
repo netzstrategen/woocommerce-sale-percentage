@@ -253,7 +253,7 @@ class SalePercentage {
    */
   public static function checkDisplaySalePercentage($salePercentage, \WC_Product $product) {
     $product_category_ids = wp_get_post_terms($product->get_id(), 'product_cat', ['fields' => 'ids']);
-    $eligible_category_ids = get_option('_sale_percentage_eligible_product_categories') ?? [];
+    $eligible_category_ids = get_option('_sale_percentage_eligible_product_categories') ?: [];
     $eligible_categories = array_intersect($eligible_category_ids, $product_category_ids);
     $is_category_eligible = !empty($eligible_categories);
     $current_category_slug = get_query_var('product_cat');
