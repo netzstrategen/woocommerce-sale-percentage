@@ -255,7 +255,7 @@ class SalePercentage {
     $product_category_ids = wp_get_post_terms($product->get_id(), 'product_cat', ['fields' => 'ids']);
     $eligible_category_ids = get_option('_sale_percentage_eligible_product_categories') ?: [];
     $eligible_categories = array_intersect($eligible_category_ids, $product_category_ids);
-    $current_category_slug = get_query_var('product_cat') ?: get_query_var('pa_kategorie');
+    $current_category_slug = get_query_var('product_cat') ?: get_query_var('pa_kategorie') ?: get_query_var('pa_warensortiment') ?: get_query_var('pa_produktart-stuhl');
     $current_category = !empty($current_category_slug) ? get_term_by('slug', $current_category_slug, 'product_cat') : '';
     $current_category_id = !empty($current_category) ? $current_category->term_id : '';
 
