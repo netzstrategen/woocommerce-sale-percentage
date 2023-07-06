@@ -18,7 +18,7 @@ class GraphQL {
   /**
    * Adds sale percentage sort enum to GraphQL.
    *
-   * @implements woographql_product_orderby_enum_values
+   * @uses woographql_product_orderby_enum_values
    */
   public static function woographql_product_orderby_enum_values($values):array {
     $values['SALE_PERCENTAGE'] = [
