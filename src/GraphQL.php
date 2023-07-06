@@ -30,7 +30,7 @@ class GraphQL {
   /**
    * Adds sale percentage sort field to GraphQL.
    *
-   * @implements graphql_woocommerce_products_add_sort_fields
+   * @uses graphql_woocommerce_products_add_sort_fields
    */
   public static function graphql_woocommerce_products_add_sort_fields($fields):array {
     $fields[] = self::getSalePercentageKey();
