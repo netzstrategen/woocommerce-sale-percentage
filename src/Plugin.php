@@ -2,6 +2,9 @@
 
 namespace Netzstrategen\SalePercentage;
 
+use ElasticPress\Indexable\Post\SyncManager;
+use Netzstrategen\SalePercentage\GraphQL;
+
 /**
  * Main front-end functionality.
  */
@@ -39,9 +42,12 @@ class Plugin {
     // updated_post_meta will only be triggered if the value has changed.
     // @see web/app/plugins/elasticpress/includes/classes/Indexable/Post/SyncManager.php:45
     if (class_exists('ElasticPress\Indexable\Post\SyncManager')) {
-      $sync_manager = new \ElasticPress\Indexable\Post\SyncManager('post');
+      $sync_manager = new SyncManager('post');
       add_action('update_post_meta', [$sync_manager, 'action_queue_meta_sync'], 10, 4);
     }
+
+    // Adds sale percentage to GraphQL.
+    GraphQL::init();
 
     // Displays sale percentage as a product flash bubble.
     add_filter('woocommerce_sale_flash', __NAMESPACE__ . '\SalePercentage::displaySalePercentage', 10, 3);
