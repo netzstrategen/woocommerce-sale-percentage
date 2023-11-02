@@ -58,6 +58,7 @@ class Plugin {
 
     // Enqueues plugin scripts and styles.
     add_action('wp_enqueue_scripts', __CLASS__ . '::enqueueAssets');
+    add_action('wp_head', __CLASS__ . '::addInlineStyle');
 
     // Adds custom order by option.
     add_filter('woocommerce_default_catalog_orderby_options', __NAMESPACE__ . '\SalePercentage::addOrderBySalePercentageOption');
@@ -96,6 +97,24 @@ class Plugin {
       'saleMinAmount' => get_option('_minimum_sale_percentage_to_display_label', SalePercentage::SALE_BUBBLE_MIN_AMOUNT),
       'salePercentageFormat' => SalePercentage::getSalePercentageFormat(),
     ]);
+  }
+
+  /**
+   * Adds plugin inline styles without a styles file enqueued.
+   *
+   * @uses wp_head
+   */
+  public static function addInlineStyle() {
+    $badge_background_color = SalePercentage::getBadgeBackgroundColor();
+    if (!empty($badge_background_color)) {
+      echo "
+      <style id='" . Plugin::PREFIX . "-inline-css' type='text/css'>
+        .products-list.products,
+        .single-product-summary {
+          --on-sale-background: {$badge_background_color};
+        }
+      </style>";
+    }
   }
 
   /**

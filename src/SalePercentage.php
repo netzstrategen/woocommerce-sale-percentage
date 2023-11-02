@@ -282,4 +282,14 @@ class SalePercentage {
     return get_option('_sale_percentage_displayed_value') === 'highest' ? __('up to -%d%%', Plugin::L10N) : '-%d%%';
   }
 
+  /**
+   * Retrieves the background color for the sale percentage badge.
+   *
+   * @return string
+   *   The sale badge background color code.
+   */
+  public static function getBadgeBackgroundColor() {
+    return get_option('_sale_percentage_background_color');
+  }
+
 }

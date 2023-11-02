@@ -104,6 +104,15 @@ class Settings {
       'type' => 'title',
     ];
     $settings[] = [
+      'id' => '_sale_percentage_background_color',
+      'type' => 'color',
+      'name' => __('Badge background color:', Plugin::L10N),
+      'desc_tip' => __('Select the background color of the product sale badge.', Plugin::L10N),
+    ];
+    $settings[] = [
+      'type' => 'title',
+    ];
+    $settings[] = [
       'type' => 'multiselect',
       'id' => '_sale_percentage_eligible_product_categories',
       'name' => __('Eligible product categories', Plugin::L10N),
