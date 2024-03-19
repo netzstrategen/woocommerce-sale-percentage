@@ -13,6 +13,7 @@ class GraphQL {
   public static function init() {
     add_filter('woographql_product_orderby_enum_values', [__CLASS__, 'woographql_product_orderby_enum_values']);
     add_filter('graphql_woocommerce_products_add_sort_fields', [__CLASS__, 'graphql_woocommerce_products_add_sort_fields']);
+    add_action('graphql_register_types', [__CLASS__, 'graphql_register_types']);
   }
 
   /**
@@ -44,6 +45,28 @@ class GraphQL {
    */
   public static function getSalePercentageKey():string {
     return get_option('_sale_percentage_displayed_value') === 'highest' ? '_sale_percentage_highest' : '_sale_percentage';
+  }
+
+  /**
+   * Registers the GraphQL field for the 'salePercentage' property of the 'Product' type.
+   *
+   * @return void
+   */
+  public static function graphql_register_types() {
+    register_graphql_field('Product', 'salePercentage', [
+      'type' => 'string',
+      'resolve' => function ($source) {
+        $product = $source?->as_WC_Data();
+        if(!$product || !$product?->is_on_sale()) {
+          return null;
+        }
+        $sale_percentage = SalePercentage::displaySalePercentage('', null, $source->as_WC_Data());
+        if (!$sale_percentage) {
+          return null;
+        }
+        return strip_tags((string) $sale_percentage);
+      },
+    ]);
   }
 
 }
