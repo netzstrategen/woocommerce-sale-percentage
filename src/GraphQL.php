@@ -57,7 +57,7 @@ class GraphQL {
       'type' => 'string',
       'resolve' => function ($source) {
         $product = $source?->as_WC_Data();
-        if(!$product) {
+        if(!$product || !$product?->is_on_sale()) {
           return null;
         }
         $sale_percentage = SalePercentage::displaySalePercentage('', null, $source->as_WC_Data());
