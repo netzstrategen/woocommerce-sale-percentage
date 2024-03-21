@@ -3,7 +3,7 @@
 // phpcs:disable
 /*
   Plugin Name: Sale Percentage
-  Version: 1.0.4
+  Version: 1.1.0
   Text Domain: sale-percentage
   Description: Manages and displays sale percentage labels.
   Author: netzstrategen

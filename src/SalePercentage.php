@@ -135,7 +135,7 @@ class SalePercentage {
       return $output;
     }
     $salePercentage = static::getProductSalePercentage($product);
-    if (static::checkDisplaySalePercentage($salePercentage, $product)) {
+    if (static::checkDisplaySalePercentage($salePercentage, $product) && $salePercentage >= static::getMinimumSalePercentage()) {
       $classes = 'onsale';
       if ($product->get_type() === 'variable') {
         $salePercentageFormat = static::getSalePercentageFormat();
@@ -146,10 +146,9 @@ class SalePercentage {
       }
 
       $output = sprintf(
-        '<span id="sale-label-%d" class="%s" %s data-sale-percentage="%d">%s</span>',
+        '<span id="sale-label-%d" class="%s" data-sale-percentage="%d">%s</span>',
         $product->get_id(),
         $classes,
-        $salePercentage >= static::getMinimumSalePercentage() ? '' : 'style="display: none;"',
         abs($salePercentage),
         sprintf($salePercentageFormat, $salePercentage)
       );
