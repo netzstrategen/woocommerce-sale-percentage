@@ -33,7 +33,7 @@ class GraphQL {
    *
    * @uses graphql_woocommerce_products_add_sort_fields
    */
-  public static function woographql_product_connection_orderby_numeric_meta_keyss($fields):array {
+  public static function woographql_product_connection_orderby_numeric_meta_keys($fields):array {
     $fields[] = self::getSalePercentageKey();
     return $fields;
   }
