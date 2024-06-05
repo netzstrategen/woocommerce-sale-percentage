@@ -12,7 +12,7 @@ class GraphQL {
    */
   public static function init() {
     add_filter('woographql_product_orderby_enum_values', [__CLASS__, 'woographql_product_orderby_enum_values']);
-    add_filter('graphql_woocommerce_products_add_sort_fields', [__CLASS__, 'graphql_woocommerce_products_add_sort_fields']);
+    add_filter('woographql_product_connection_orderby_numeric_meta_keys', [__CLASS__, 'woographql_product_connection_orderby_numeric_meta_keys']);
     add_action('graphql_register_types', [__CLASS__, 'graphql_register_types']);
   }
 
@@ -31,9 +31,9 @@ class GraphQL {
   /**
    * Adds sale percentage sort field to GraphQL.
    *
-   * @uses graphql_woocommerce_products_add_sort_fields
+   * @uses woographql_product_connection_orderby_numeric_meta_keys
    */
-  public static function graphql_woocommerce_products_add_sort_fields($fields):array {
+  public static function woographql_product_connection_orderby_numeric_meta_keys($fields):array {
     $fields[] = self::getSalePercentageKey();
     return $fields;
   }
