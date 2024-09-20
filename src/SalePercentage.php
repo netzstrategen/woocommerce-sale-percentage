@@ -91,7 +91,7 @@ class SalePercentage {
     if ($post->post_type === 'product') {
       $product_has_variation = $wpdb->get_var("SELECT ID from wp_posts WHERE post_type = 'product_variation' AND post_parent = $post_id LIMIT 0,1");
       if ($product_has_variation) {
-        $where = "WHERE p.post_type = 'product_variation' AND p.post_parent = $post_id";
+        $where = "WHERE p.post_type = 'product_variation' AND p.post_parent = $post_id AND p.post_status = 'publish'";
       }
       else {
         $where = "WHERE p.post_type = 'product' AND p.ID = $post_id";
