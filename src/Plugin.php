@@ -62,7 +62,7 @@ class Plugin {
     // Adds custom order by option.
     add_filter('woocommerce_default_catalog_orderby_options', __NAMESPACE__ . '\SalePercentage::addOrderBySalePercentageOption');
     add_filter('woocommerce_catalog_orderby', __NAMESPACE__ . '\SalePercentage::addOrderBySalePercentageOption');
-    add_filter('woocommerce_get_catalog_ordering_args', __NAMESPACE__ . '\SalePercentage::orderProductsBySalePercentage');
+    add_filter('woocommerce_get_catalog_ordering_args', __NAMESPACE__ . '\SalePercentage::orderProductsBySalePercentage',20, 3);
   }
 
   /**

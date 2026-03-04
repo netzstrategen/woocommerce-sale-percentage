@@ -1,6 +1,7 @@
 <?php
 
 namespace Netzstrategen\SalePercentage;
+use Netzstrategen\SalePercentage\GraphQL;
 
 /**
  * Main plugin functionality.
@@ -189,12 +190,17 @@ class SalePercentage {
    *
    * @implements woocommerce_get_catalog_ordering_args
    */
-  public static function orderProductsBySalePercentage($args) {
+  public static function orderProductsBySalePercentage($args, $orderby, $order) {
     $orderby_value = isset($_GET['orderby']) ? wc_clean($_GET['orderby']) : apply_filters('woocommerce_default_catalog_orderby', get_option('woocommerce_default_catalog_orderby'));
     if ('sale_percentage' === $orderby_value) {
       $args['orderby'] = 'meta_value_num';
       $args['order'] = 'DESC';
       $args['meta_key'] = get_option('_sale_percentage_displayed_value') === 'highest' ? '_sale_percentage_highest' : '_sale_percentage';
+    }
+    elseif ( GraphQL::getSalePercentageKey() === $orderby) {
+      $args['orderby'] = 'meta_value_num';
+      $args['order'] = $order;
+      $args['meta_key'] = $orderby;
     }
     return $args;
   }
