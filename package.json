@@ -21,7 +21,7 @@
     "build": "gulp build --production=true --concat=false"
   },
   "dependencies": {
-    "@netzstrategen/gulp-task-collection": "^2.1.3"
+    "@netzstrategen/gulp-task-collection": "^4.1.4"
   },
   "devDependencies": {
     "eslint-config-google": "^0.14.0"
